@@ -16,5 +16,24 @@ namespace _323assignment
         {
             InitializeComponent();
         }
+
+        private void LoginPage_Load(object sender, EventArgs e)
+        {
+
+
+        }
+
+        private void ButtonLogin_Click(object sender, EventArgs e)
+        {
+            OracleDB Database = new OracleDB();
+            if (Database.Connect()){
+                MessageBox.Show("Success");
+
+            }
+            else
+            {
+                MessageBox.Show("Failure");
+            }
+        }
     }
 }

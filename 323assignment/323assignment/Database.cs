@@ -7,13 +7,22 @@ using Oracle.ManagedDataAccess.Client;
 
 namespace _323assignment
 {
-    class Database
+    class OracleDB
     {
-        private void Connect()
+        public Boolean Connect()
         {
-            string oradb = "Data Source=ORCL;User Id=hr;Password=hr;";
-            OracleConnection conn = new OracleConnection(oradb);  // C#
-            conn.Open();
+            try
+            {
+                string oradb = "Data Source=oracle.cms.waikato.ac.nz:1521/teaching;User Id=COMPX323_05;Password=qVfsntckJ9;";
+                OracleConnection conn = new OracleConnection(oradb);
+                conn.Open();
+                return true;
+            }
+            catch
+            {
+                Console.WriteLine("An Error Occured connecting to the database");
+                return false;
+            }
         }
     }
 }
