@@ -33,6 +33,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.comboBoxModel = new System.Windows.Forms.ComboBox();
             this.buttonSearch = new System.Windows.Forms.Button();
+            this.listBoxCars = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // comboBoxMake
@@ -78,12 +79,22 @@
             this.buttonSearch.TabIndex = 4;
             this.buttonSearch.Text = "Search";
             this.buttonSearch.UseVisualStyleBackColor = true;
+            this.buttonSearch.Click += new System.EventHandler(this.ButtonSearch_Click);
+            // 
+            // listBoxCars
+            // 
+            this.listBoxCars.FormattingEnabled = true;
+            this.listBoxCars.Location = new System.Drawing.Point(402, 87);
+            this.listBoxCars.Name = "listBoxCars";
+            this.listBoxCars.Size = new System.Drawing.Size(345, 368);
+            this.listBoxCars.TabIndex = 5;
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(779, 495);
+            this.Controls.Add(this.listBoxCars);
             this.Controls.Add(this.buttonSearch);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.comboBoxModel);
@@ -104,6 +115,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboBoxModel;
         private System.Windows.Forms.Button buttonSearch;
+        private System.Windows.Forms.ListBox listBoxCars;
     }
 }
 

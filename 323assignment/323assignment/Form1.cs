@@ -18,6 +18,10 @@ namespace _323assignment
         {
             InitializeComponent();
             Database = new OracleDB();
+            if (!Database.Connect())
+            {
+                MessageBox.Show("Failed to connect to the Database");
+            }
         }
 
         private void LoadMakes()
@@ -26,24 +30,23 @@ namespace _323assignment
             comboBoxMake.Items.Add(dr.GetString(0));
         }
 
-        private void ButtonLogin_Click(object sender, EventArgs e)
-        {
-            
-            if (Database.Connect()){
-                MessageBox.Show("Success");
-
-            }
-            else
-            {
-                MessageBox.Show("Failure");
-            }
-        }
-
         private void ComboBoxMake_SelectedIndexChanged(object sender, EventArgs e)
         {
+            comboBoxMake.Text = "";
             String make = comboBoxMake.SelectedItem.ToString();
             OracleDataReader dr = Database.Query("Select model_name from model where make_name = " + make);
             comboBoxModel.Items.Add(dr.GetString(0));
+        }
+
+        private void ButtonSearch_Click(object sender, EventArgs e)
+        {
+            String make = comboBoxMake.SelectedItem.ToString();
+            String model = comboBoxModel.SelectedItem.ToString();
+            if (make != "" && model != "")
+            {
+                OracleDataReader dr = Database.Query("Select * from car Where make = " + make + " and model = " + model);
+                listBoxCars.Items.Add(dr.GetString(0));
+            }
         }
     }
 }
