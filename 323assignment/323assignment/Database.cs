@@ -35,7 +35,6 @@ namespace _323assignment
                 cmd.CommandText = query;
                 cmd.CommandType = CommandType.Text;
                 OracleDataReader dr = cmd.ExecuteReader();
-                dr.Read();
                 return dr;
 
             }

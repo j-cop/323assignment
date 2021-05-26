@@ -22,36 +22,44 @@ namespace _323assignment
             {
                 MessageBox.Show("Failed to connect to the Database");
             }
+            LoadMakes();
         }
 
         private void LoadMakes()
         {
             try
             {
-                OracleDataReader dr = Database.Query("Select Name from Make");
-                comboBoxMake.Items.Add(dr.GetString(0));
+                OracleDataReader dr = Database.Query("Select name from make");
+                while (dr.Read())
+                {
+                    comboBoxMake.Items.Add(dr.GetString(0));
+                }
             }
-            catch
+            catch(Exception ex)
             {
-                MessageBox.Show("An Error has occured. Please check your parameters and try again");
+                MessageBox.Show("An Error has occured:" + ex);
             }
 
         }
 
         private void ComboBoxMake_SelectedIndexChanged(object sender, EventArgs e)
         {
-            comboBoxMake.Text = "";
-            String make = comboBoxMake.SelectedItem.ToString();
+            comboBoxModel.Text = "";
+            comboBoxModel.Items.Clear();
+            String make = this.comboBoxMake.GetItemText(this.comboBoxMake.SelectedItem);
             try
             {
-                OracleDataReader dr = Database.Query("Select model_name from model where make_name = " + make);
-                comboBoxModel.Items.Add(dr.GetString(0));
+                OracleDataReader dr = Database.Query("Select name from model where make = '" + make+"'");
+                while (dr.Read())
+                {
+                    comboBoxModel.Items.Add(dr.GetString(0));
+                }   
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("An Error has occured. Please check your parameters and try again");
+                MessageBox.Show("An Error has occured:" + ex);
             }
-            
+
         }
 
         private void ButtonSearch_Click(object sender, EventArgs e)
@@ -62,12 +70,16 @@ namespace _323assignment
             {
                 try
                 {
-                    OracleDataReader dr = Database.Query("Select * from car Where make = " + make + " and model = " + model);
-                    listBoxCars.Items.Add(dr.GetString(0));
+                    OracleDataReader dr = Database.Query("Select * from car Where make = '" + make + "' and model = '" + model+"'");
+                    while (dr.Read())
+                    {
+                        listBoxCars.Items.Add(dr.GetString(0));
+                    }
+
                 }
-                catch
+                catch (Exception ex)
                 {
-                    MessageBox.Show("An Error has occured. Please check your parameters and try again");
+                    MessageBox.Show("An Error has occured:" + ex);
                 }
             }
         }
