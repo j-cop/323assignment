@@ -26,16 +26,32 @@ namespace _323assignment
 
         private void LoadMakes()
         {
-            OracleDataReader dr = Database.Query("Select Name from Make");
-            comboBoxMake.Items.Add(dr.GetString(0));
+            try
+            {
+                OracleDataReader dr = Database.Query("Select Name from Make");
+                comboBoxMake.Items.Add(dr.GetString(0));
+            }
+            catch
+            {
+                MessageBox.Show("An Error has occured. Please check your parameters and try again");
+            }
+
         }
 
         private void ComboBoxMake_SelectedIndexChanged(object sender, EventArgs e)
         {
             comboBoxMake.Text = "";
             String make = comboBoxMake.SelectedItem.ToString();
-            OracleDataReader dr = Database.Query("Select model_name from model where make_name = " + make);
-            comboBoxModel.Items.Add(dr.GetString(0));
+            try
+            {
+                OracleDataReader dr = Database.Query("Select model_name from model where make_name = " + make);
+                comboBoxModel.Items.Add(dr.GetString(0));
+            }
+            catch
+            {
+                MessageBox.Show("An Error has occured. Please check your parameters and try again");
+            }
+            
         }
 
         private void ButtonSearch_Click(object sender, EventArgs e)
@@ -44,8 +60,15 @@ namespace _323assignment
             String model = comboBoxModel.SelectedItem.ToString();
             if (make != "" && model != "")
             {
-                OracleDataReader dr = Database.Query("Select * from car Where make = " + make + " and model = " + model);
-                listBoxCars.Items.Add(dr.GetString(0));
+                try
+                {
+                    OracleDataReader dr = Database.Query("Select * from car Where make = " + make + " and model = " + model);
+                    listBoxCars.Items.Add(dr.GetString(0));
+                }
+                catch
+                {
+                    MessageBox.Show("An Error has occured. Please check your parameters and try again");
+                }
             }
         }
     }
