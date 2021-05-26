@@ -88,6 +88,7 @@
             // 
             // listBoxCars
             // 
+            this.listBoxCars.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBoxCars.FormattingEnabled = true;
             this.listBoxCars.Location = new System.Drawing.Point(368, 87);
             this.listBoxCars.Name = "listBoxCars";
@@ -117,13 +118,13 @@
             // sellToolStripMenuItem
             // 
             this.sellToolStripMenuItem.Name = "sellToolStripMenuItem";
-            this.sellToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.sellToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
             this.sellToolStripMenuItem.Text = "Sell";
             // 
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
             this.addToolStripMenuItem.Text = "Add";
             // 
             // Main

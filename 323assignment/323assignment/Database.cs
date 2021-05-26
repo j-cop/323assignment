@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using Oracle.ManagedDataAccess.Client;
 
 namespace _323assignment
@@ -38,8 +39,9 @@ namespace _323assignment
                 return dr;
 
             }
-            catch
+            catch(Exception e)
             {
+                MessageBox.Show("Error: " + e);
                 return null;
             }
         }
