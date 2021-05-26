@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Oracle.ManagedDataAccess.Client;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,22 +11,24 @@ using System.Windows.Forms;
 
 namespace _323assignment
 {
-    public partial class LoginPage : Form
+    public partial class Main : Form
     {
-        public LoginPage()
+        OracleDB Database;
+        public Main()
         {
             InitializeComponent();
+            Database = new OracleDB();
         }
 
-        private void LoginPage_Load(object sender, EventArgs e)
+        private void LoadMakes()
         {
-
-
+            OracleDataReader dr = Database.Query("Select Name from Make");
+            comboBoxMake.Items.Add(dr.GetString(0));
         }
 
         private void ButtonLogin_Click(object sender, EventArgs e)
         {
-            OracleDB Database = new OracleDB();
+            
             if (Database.Connect()){
                 MessageBox.Show("Success");
 
@@ -34,6 +37,13 @@ namespace _323assignment
             {
                 MessageBox.Show("Failure");
             }
+        }
+
+        private void ComboBoxMake_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            String make = comboBoxMake.SelectedItem.ToString();
+            OracleDataReader dr = Database.Query("Select model_name from model where make_name = " + make);
+            comboBoxModel.Items.Add(dr.GetString(0));
         }
     }
 }
