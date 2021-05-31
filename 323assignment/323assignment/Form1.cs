@@ -85,5 +85,12 @@ namespace _323assignment
                 }
             }
         }
+
+        private void AddToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddCar addCarWindow = new AddCar();
+            addCarWindow.Show();
+
+        }
     }
 }
