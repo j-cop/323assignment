@@ -45,9 +45,17 @@
             this.label8 = new System.Windows.Forms.Label();
             this.numericUpDownSeats = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxVIN = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.buttonAddCar = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.comboBoxBody = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.comboBoxMake = new System.Windows.Forms.ComboBox();
+            this.comboBoxModel = new System.Windows.Forms.ComboBox();
+            this.comboBoxDealership = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDoors)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFuelRating)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSeats)).BeginInit();
@@ -131,7 +139,7 @@
             this.comboBoxFuelType.FormattingEnabled = true;
             this.comboBoxFuelType.Location = new System.Drawing.Point(26, 233);
             this.comboBoxFuelType.Name = "comboBoxFuelType";
-            this.comboBoxFuelType.Size = new System.Drawing.Size(139, 21);
+            this.comboBoxFuelType.Size = new System.Drawing.Size(102, 21);
             this.comboBoxFuelType.TabIndex = 8;
             // 
             // label5
@@ -237,12 +245,12 @@
             this.label9.TabIndex = 17;
             this.label9.Text = "Seats:";
             // 
-            // textBox1
+            // textBoxVIN
             // 
-            this.textBox1.Location = new System.Drawing.Point(26, 41);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(139, 20);
-            this.textBox1.TabIndex = 18;
+            this.textBoxVIN.Location = new System.Drawing.Point(26, 41);
+            this.textBoxVIN.Name = "textBoxVIN";
+            this.textBoxVIN.Size = new System.Drawing.Size(139, 20);
+            this.textBoxVIN.TabIndex = 18;
             // 
             // label10
             // 
@@ -255,21 +263,98 @@
             // 
             // buttonAddCar
             // 
-            this.buttonAddCar.Location = new System.Drawing.Point(26, 275);
+            this.buttonAddCar.Location = new System.Drawing.Point(26, 370);
             this.buttonAddCar.Name = "buttonAddCar";
             this.buttonAddCar.Size = new System.Drawing.Size(225, 23);
             this.buttonAddCar.TabIndex = 20;
             this.buttonAddCar.Text = "Add Car";
             this.buttonAddCar.UseVisualStyleBackColor = true;
+            this.buttonAddCar.Click += new System.EventHandler(this.buttonAddCar_Click);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(148, 217);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(60, 13);
+            this.label11.TabIndex = 22;
+            this.label11.Text = "Body Style:";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(23, 270);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(37, 13);
+            this.label12.TabIndex = 23;
+            this.label12.Text = "Make:";
+            // 
+            // comboBoxBody
+            // 
+            this.comboBoxBody.FormattingEnabled = true;
+            this.comboBoxBody.Location = new System.Drawing.Point(149, 233);
+            this.comboBoxBody.Name = "comboBoxBody";
+            this.comboBoxBody.Size = new System.Drawing.Size(102, 21);
+            this.comboBoxBody.TabIndex = 24;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(148, 270);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(39, 13);
+            this.label13.TabIndex = 25;
+            this.label13.Text = "Model:";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(23, 316);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(60, 13);
+            this.label14.TabIndex = 26;
+            this.label14.Text = "Dealership:";
+            // 
+            // comboBoxMake
+            // 
+            this.comboBoxMake.FormattingEnabled = true;
+            this.comboBoxMake.Location = new System.Drawing.Point(26, 286);
+            this.comboBoxMake.Name = "comboBoxMake";
+            this.comboBoxMake.Size = new System.Drawing.Size(102, 21);
+            this.comboBoxMake.TabIndex = 27;
+            // 
+            // comboBoxModel
+            // 
+            this.comboBoxModel.FormattingEnabled = true;
+            this.comboBoxModel.Location = new System.Drawing.Point(149, 286);
+            this.comboBoxModel.Name = "comboBoxModel";
+            this.comboBoxModel.Size = new System.Drawing.Size(102, 21);
+            this.comboBoxModel.TabIndex = 28;
+            // 
+            // comboBoxDealership
+            // 
+            this.comboBoxDealership.FormattingEnabled = true;
+            this.comboBoxDealership.Location = new System.Drawing.Point(26, 332);
+            this.comboBoxDealership.Name = "comboBoxDealership";
+            this.comboBoxDealership.Size = new System.Drawing.Size(225, 21);
+            this.comboBoxDealership.TabIndex = 29;
             // 
             // AddCar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(278, 336);
+            this.ClientSize = new System.Drawing.Size(268, 413);
+            this.Controls.Add(this.comboBoxDealership);
+            this.Controls.Add(this.comboBoxModel);
+            this.Controls.Add(this.comboBoxMake);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.comboBoxBody);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.buttonAddCar);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxVIN);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.numericUpDownSeats);
             this.Controls.Add(this.label8);
@@ -316,8 +401,16 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.NumericUpDown numericUpDownSeats;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxVIN;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button buttonAddCar;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ComboBox comboBoxBody;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.ComboBox comboBoxMake;
+        private System.Windows.Forms.ComboBox comboBoxModel;
+        private System.Windows.Forms.ComboBox comboBoxDealership;
     }
 }
