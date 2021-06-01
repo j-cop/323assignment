@@ -30,14 +30,12 @@
         {
             this.comboBoxTransmission = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBoxEngineSize = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.numericUpDownDoors = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
             this.comboBoxFuelType = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBoxProdYear = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.numericUpDownFuelRating = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
@@ -56,9 +54,13 @@
             this.comboBoxMake = new System.Windows.Forms.ComboBox();
             this.comboBoxModel = new System.Windows.Forms.ComboBox();
             this.comboBoxDealership = new System.Windows.Forms.ComboBox();
+            this.numericUpDownEngineSize = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownProdYear = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDoors)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFuelRating)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSeats)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEngineSize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownProdYear)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBoxTransmission
@@ -77,13 +79,6 @@
             this.label1.Size = new System.Drawing.Size(71, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "Transmission:";
-            // 
-            // textBoxEngineSize
-            // 
-            this.textBoxEngineSize.Location = new System.Drawing.Point(26, 92);
-            this.textBoxEngineSize.Name = "textBoxEngineSize";
-            this.textBoxEngineSize.Size = new System.Drawing.Size(114, 20);
-            this.textBoxEngineSize.TabIndex = 2;
             // 
             // label2
             // 
@@ -150,13 +145,6 @@
             this.label5.Size = new System.Drawing.Size(57, 13);
             this.label5.TabIndex = 9;
             this.label5.Text = "Fuel Type:";
-            // 
-            // textBoxProdYear
-            // 
-            this.textBoxProdYear.Location = new System.Drawing.Point(151, 188);
-            this.textBoxProdYear.Name = "textBoxProdYear";
-            this.textBoxProdYear.Size = new System.Drawing.Size(100, 20);
-            this.textBoxProdYear.TabIndex = 10;
             // 
             // label6
             // 
@@ -322,6 +310,7 @@
             this.comboBoxMake.Name = "comboBoxMake";
             this.comboBoxMake.Size = new System.Drawing.Size(102, 21);
             this.comboBoxMake.TabIndex = 27;
+            this.comboBoxMake.SelectedIndexChanged += new System.EventHandler(this.ComboBoxMake_SelectedIndexChanged);
             // 
             // comboBoxModel
             // 
@@ -339,11 +328,57 @@
             this.comboBoxDealership.Size = new System.Drawing.Size(225, 21);
             this.comboBoxDealership.TabIndex = 29;
             // 
+            // numericUpDownEngineSize
+            // 
+            this.numericUpDownEngineSize.Location = new System.Drawing.Point(26, 97);
+            this.numericUpDownEngineSize.Maximum = new decimal(new int[] {
+            8000,
+            0,
+            0,
+            0});
+            this.numericUpDownEngineSize.Minimum = new decimal(new int[] {
+            900,
+            0,
+            0,
+            0});
+            this.numericUpDownEngineSize.Name = "numericUpDownEngineSize";
+            this.numericUpDownEngineSize.Size = new System.Drawing.Size(114, 20);
+            this.numericUpDownEngineSize.TabIndex = 30;
+            this.numericUpDownEngineSize.Value = new decimal(new int[] {
+            1798,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDownProdYear
+            // 
+            this.numericUpDownProdYear.Location = new System.Drawing.Point(149, 188);
+            this.numericUpDownProdYear.Maximum = new decimal(new int[] {
+            2025,
+            0,
+            0,
+            0});
+            this.numericUpDownProdYear.Minimum = new decimal(new int[] {
+            1970,
+            0,
+            0,
+            0});
+            this.numericUpDownProdYear.Name = "numericUpDownProdYear";
+            this.numericUpDownProdYear.Size = new System.Drawing.Size(102, 20);
+            this.numericUpDownProdYear.TabIndex = 31;
+            this.numericUpDownProdYear.Value = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            // 
             // AddCar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(268, 413);
+            this.Controls.Add(this.numericUpDownProdYear);
+            this.Controls.Add(this.numericUpDownEngineSize);
             this.Controls.Add(this.comboBoxDealership);
             this.Controls.Add(this.comboBoxModel);
             this.Controls.Add(this.comboBoxMake);
@@ -362,14 +397,12 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.numericUpDownFuelRating);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBoxProdYear);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.comboBoxFuelType);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.numericUpDownDoors);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBoxEngineSize);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBoxTransmission);
             this.Name = "AddCar";
@@ -377,6 +410,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDoors)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFuelRating)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSeats)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEngineSize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownProdYear)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -386,14 +421,12 @@
 
         private System.Windows.Forms.ComboBox comboBoxTransmission;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBoxEngineSize;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.NumericUpDown numericUpDownDoors;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox comboBoxFuelType;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBoxProdYear;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.NumericUpDown numericUpDownFuelRating;
         private System.Windows.Forms.Label label7;
@@ -412,5 +445,7 @@
         private System.Windows.Forms.ComboBox comboBoxMake;
         private System.Windows.Forms.ComboBox comboBoxModel;
         private System.Windows.Forms.ComboBox comboBoxDealership;
+        private System.Windows.Forms.NumericUpDown numericUpDownEngineSize;
+        private System.Windows.Forms.NumericUpDown numericUpDownProdYear;
     }
 }
