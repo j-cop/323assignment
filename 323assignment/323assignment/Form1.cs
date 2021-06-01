@@ -14,9 +14,11 @@ namespace _323assignment
     public partial class Main : Form
     {
         OracleDB Database;
+        bool isOracle;
         public Main()
         {
             InitializeComponent();
+            isOracle = true;
             Database = new OracleDB();
             if (!Database.Connect())
             {
@@ -88,9 +90,20 @@ namespace _323assignment
 
         private void AddToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AddCar addCarWindow = new AddCar();
+            AddCar addCarWindow = new AddCar(isOracle);
             addCarWindow.Show();
 
+        }
+
+        private void SellToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //string VIN = ;
+           // OracleDataReader dr = Database.Query("delete from car where VIN = '"+VIN+"'");
+        }
+
+        private void RadioButtonOracle_CheckedChanged(object sender, EventArgs e)
+        {
+            isOracle = !isOracle;
         }
     }
 }

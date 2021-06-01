@@ -14,15 +14,22 @@ namespace _323assignment
     public partial class AddCar : Form
     {
         OracleDB Database;
-        public AddCar()
+        bool oracle;
+        public AddCar(bool isOracle)
         {
             InitializeComponent();
-            Database = new OracleDB();
-            if (!Database.Connect())
+            oracle = isOracle;
+            if (oracle)
             {
-                MessageBox.Show("Failed to connect to the Database");
-                this.Close();
+                Database = new OracleDB();
+                if (!Database.Connect())
+                {
+                    MessageBox.Show("Failed to connect to the Database");
+                    this.Close();
+                }
+                OracleLoadItems();
             }
+
         }
 
         private void OracleLoadItems()
@@ -71,35 +78,38 @@ namespace _323assignment
 
         private void buttonAddCar_Click(object sender, EventArgs e)
         {
-            try
+            if (oracle)
             {
-                string VIN = textBoxVIN.Text;
-                string transmission = comboBoxTransmission.ToString();
-                string colour = textBoxColour.Text;
-                string fuelType = comboBoxFuelType.SelectedItem.ToString();
-                string bodyStyle = comboBoxBody.SelectedItem.ToString();
-                string make = comboBoxMake.SelectedItem.ToString();
-                string model = comboBoxModel.SelectedItem.ToString();
-                string dealership = comboBoxDealership.SelectedItem.ToString();
-                int prodYear = (int)numericUpDownProdYear.Value;
-                int engineSize = (int)numericUpDownEngineSize.Value;
-                int doors = (int)numericUpDownDoors.Value;
-                int fuelRating = (int)numericUpDownFuelRating.Value;
-                int seats = (int)numericUpDownSeats.Value;
-                if (String.IsNullOrEmpty(VIN) || String.IsNullOrEmpty(transmission) ||  String.IsNullOrEmpty(colour) || String.IsNullOrEmpty(fuelType) || String.IsNullOrEmpty(bodyStyle) || String.IsNullOrEmpty(make) || String.IsNullOrEmpty(model) || String.IsNullOrEmpty(dealership))
+                try
                 {
-                    MessageBox.Show("Check Details and try again");
+                    string VIN = textBoxVIN.Text;
+                    string transmission = comboBoxTransmission.ToString();
+                    string colour = textBoxColour.Text;
+                    string fuelType = comboBoxFuelType.SelectedItem.ToString();
+                    string bodyStyle = comboBoxBody.SelectedItem.ToString();
+                    string make = comboBoxMake.SelectedItem.ToString();
+                    string model = comboBoxModel.SelectedItem.ToString();
+                    string dealership = comboBoxDealership.SelectedItem.ToString();
+                    int prodYear = (int)numericUpDownProdYear.Value;
+                    int engineSize = (int)numericUpDownEngineSize.Value;
+                    int doors = (int)numericUpDownDoors.Value;
+                    int fuelRating = (int)numericUpDownFuelRating.Value;
+                    int seats = (int)numericUpDownSeats.Value;
+                    if (String.IsNullOrEmpty(VIN) || String.IsNullOrEmpty(transmission) || String.IsNullOrEmpty(colour) || String.IsNullOrEmpty(fuelType) || String.IsNullOrEmpty(bodyStyle) || String.IsNullOrEmpty(make) || String.IsNullOrEmpty(model) || String.IsNullOrEmpty(dealership))
+                    {
+                        MessageBox.Show("Check Details and try again");
+                    }
+                    else
+                    {
+                        Database.Query("insert into Car (VIN, engine_size, doors, prod_year, fuel_rating, colour, seats, make, model, fuel_type, body_style, dealership, transmission) values ('" + VIN + "', " + engineSize + ", " + doors + ", " + prodYear + ", " + fuelRating + ", '" + colour + "', " + seats + ", '" + make + "', '" + model + "', '" + fuelType + "', '" + bodyStyle + "', " + dealership + ", '" + transmission + "')");
+                        MessageBox.Show("Car added!");
+                        this.Close();
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    Database.Query("insert into Car (VIN, engine_size, doors, prod_year, fuel_rating, colour, seats, make, model, fuel_type, body_style, dealership, transmission) values ('" + VIN + "', " + engineSize + ", " + doors + ", " + prodYear + ", " + fuelRating + ", '" + colour + "', " + seats + ", '" + make + "', '" + model + "', '" + fuelType + "', '" + bodyStyle + "', " + dealership + ", '" + transmission + "')");
-                    MessageBox.Show("Car added!");
-                    this.Close();
+                    MessageBox.Show(ex + "check your entries and try again.");
                 }
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show( ex + "check your entries and try again.");
             }
 
             
@@ -110,17 +120,20 @@ namespace _323assignment
             comboBoxModel.Text = "";
             comboBoxModel.Items.Clear();
             String make = this.comboBoxMake.GetItemText(this.comboBoxMake.SelectedItem);
-            try
+            if (oracle)
             {
-                OracleDataReader dr = Database.Query("Select name from model where make = '" + make + "'");
-                while (dr.Read())
+                try
                 {
-                    comboBoxModel.Items.Add(dr.GetString(0));
+                    OracleDataReader dr = Database.Query("Select name from model where make = '" + make + "'");
+                    while (dr.Read())
+                    {
+                        comboBoxModel.Items.Add(dr.GetString(0));
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("An Error has occured:" + ex);
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An Error has occured:" + ex);
+                }
             }
         }
     }
