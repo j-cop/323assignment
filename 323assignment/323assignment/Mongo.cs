@@ -39,9 +39,11 @@ namespace _323assignment
 
         }
 
-        public void Delete()
+        public void Insert(string collection, BsonDocument insertDoc)
         {
-             
+            IMongoDatabase database = dbClient.GetDatabase("compx323-05");
+            IMongoCollection<BsonDocument> doc = database.GetCollection<BsonDocument>(collection);
+            doc.InsertOne(insertDoc);
         }
     }
 }

@@ -66,6 +66,7 @@ namespace _323assignment
             {
                 combo.Items.Add(item.GetValue("name").ToString());
 
+
             }
         }
 
@@ -152,7 +153,28 @@ namespace _323assignment
                 }
                 else
                 {
-
+                    string dealershipID = "";
+                    BsonDocument car = new BsonDocument();
+                    car.Add(new BsonElement("vin", VIN));
+                    car.Add(new BsonElement("colour", colour));
+                    car.Add(new BsonElement("transmission", transmission));
+                    car.Add(new BsonElement("body_style", bodyStyle));
+                    car.Add(new BsonElement("model", model));
+                    car.Add(new BsonElement("make", make));
+                    car.Add(new BsonElement("prod_year", prodYear));
+                    car.Add(new BsonElement("doors", doors));
+                    car.Add(new BsonElement("engine_size", engineSize));
+                    car.Add(new BsonElement("fuel_rating", fuelRating));
+                    car.Add(new BsonElement("seats", seats));
+                    List<BsonDocument> dID = mongoDB.Read("Dealership", new BsonDocument("name", dealership));
+                    foreach (BsonDocument item in dID)
+                    {
+                        dealershipID = item.GetValue("_id").ToString();
+                    }
+                    car.Add(new BsonElement("dealership", dealershipID));
+                    car.Add(new BsonElement("fuel_type", fuelType));
+                    mongoDB.Insert("car", car);
+                    this.Close();
                 }
             }
             else
