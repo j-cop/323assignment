@@ -115,44 +115,54 @@ namespace _323assignment
 
         private void buttonAddCar_Click(object sender, EventArgs e)
         {
-            if (oracle)
+
+            string VIN = textBoxVIN.Text;
+            string transmission = comboBoxTransmission.SelectedItem.ToString();
+            string colour = textBoxColour.Text;
+            string fuelType = comboBoxFuelType.SelectedItem.ToString();
+            string bodyStyle = comboBoxBody.SelectedItem.ToString();
+            string make = comboBoxMake.SelectedItem.ToString();
+            string model = comboBoxModel.SelectedItem.ToString();
+            string dealership = comboBoxDealership.SelectedItem.ToString();
+            int prodYear = (int)numericUpDownProdYear.Value;
+            int engineSize = (int)numericUpDownEngineSize.Value;
+            int doors = (int)numericUpDownDoors.Value;
+            int fuelRating = (int)numericUpDownFuelRating.Value;
+            int seats = (int)numericUpDownSeats.Value;
+            if (!(String.IsNullOrEmpty(VIN) || String.IsNullOrEmpty(transmission) || String.IsNullOrEmpty(colour) || String.IsNullOrEmpty(fuelType) || String.IsNullOrEmpty(bodyStyle) || String.IsNullOrEmpty(make) || String.IsNullOrEmpty(model) || String.IsNullOrEmpty(dealership)))
             {
-                try
+                if (oracle)
                 {
-                    string VIN = textBoxVIN.Text;
-                    string transmission = comboBoxTransmission.SelectedItem.ToString();
-                    string colour = textBoxColour.Text;
-                    string fuelType = comboBoxFuelType.SelectedItem.ToString();
-                    string bodyStyle = comboBoxBody.SelectedItem.ToString();
-                    string make = comboBoxMake.SelectedItem.ToString();
-                    string model = comboBoxModel.SelectedItem.ToString();
-                    string dealership = comboBoxDealership.SelectedItem.ToString();
-                    int prodYear = (int)numericUpDownProdYear.Value;
-                    int engineSize = (int)numericUpDownEngineSize.Value;
-                    int doors = (int)numericUpDownDoors.Value;
-                    int fuelRating = (int)numericUpDownFuelRating.Value;
-                    int seats = (int)numericUpDownSeats.Value;
-                    if (String.IsNullOrEmpty(VIN) || String.IsNullOrEmpty(transmission) || String.IsNullOrEmpty(colour) || String.IsNullOrEmpty(fuelType) || String.IsNullOrEmpty(bodyStyle) || String.IsNullOrEmpty(make) || String.IsNullOrEmpty(model) || String.IsNullOrEmpty(dealership))
+                    try
                     {
-                        MessageBox.Show("Check Details and try again");
-                    }
-                    else
-                    { 
+
                         OracleDataReader dr = Database.Query("Select id from dealership where name = '" + dealership + "'");
                         dr.Read();
                         int ds = int.Parse(dr.GetString(0));
                         Database.Query("insert into car (VIN, engine_size, doors, prod_year, fuel_rating, colour, seats, make, model, fuel_type, body_style, dealership, transmission) values ('" + VIN + "', " + engineSize + ", " + doors + ", " + prodYear + ", " + fuelRating + ", '" + colour + "', " + seats + ", '" + make + "', '" + model + "', '" + fuelType + "', '" + bodyStyle + "', '" + ds + "', '" + transmission + "')");
-                        
+
                         this.Close();
+
                     }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex + "check your entries and try again.");
+                    }
+
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show(ex + "check your entries and try again.");
+
                 }
             }
+            else
+            {
+                MessageBox.Show("Check Details and try again");
+            }
+
 
             
+
         }
 
         private void ComboBoxMake_SelectedIndexChanged(object sender, EventArgs e)
