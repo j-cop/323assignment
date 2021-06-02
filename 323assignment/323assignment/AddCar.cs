@@ -64,7 +64,7 @@ namespace _323assignment
                 dr = Database.Query("Select name from dealership");
                 while (dr.Read())
                 {
-                    comboBoxMake.Items.Add(dr.GetString(0));
+                    comboBoxDealership.Items.Add(dr.GetString(0));
                 }
 
             }
@@ -83,7 +83,7 @@ namespace _323assignment
                 try
                 {
                     string VIN = textBoxVIN.Text;
-                    string transmission = comboBoxTransmission.ToString();
+                    string transmission = comboBoxTransmission.SelectedItem.ToString();
                     string colour = textBoxColour.Text;
                     string fuelType = comboBoxFuelType.SelectedItem.ToString();
                     string bodyStyle = comboBoxBody.SelectedItem.ToString();
@@ -100,9 +100,12 @@ namespace _323assignment
                         MessageBox.Show("Check Details and try again");
                     }
                     else
-                    {
-                        Database.Query("insert into Car (VIN, engine_size, doors, prod_year, fuel_rating, colour, seats, make, model, fuel_type, body_style, dealership, transmission) values ('" + VIN + "', " + engineSize + ", " + doors + ", " + prodYear + ", " + fuelRating + ", '" + colour + "', " + seats + ", '" + make + "', '" + model + "', '" + fuelType + "', '" + bodyStyle + "', " + dealership + ", '" + transmission + "')");
-                        MessageBox.Show("Car added!");
+                    { 
+                        OracleDataReader dr = Database.Query("Select id from dealership where name = '" + dealership + "'");
+                        dr.Read();
+                        int ds = int.Parse(dr.GetString(0));
+                        Database.Query("insert into car (VIN, engine_size, doors, prod_year, fuel_rating, colour, seats, make, model, fuel_type, body_style, dealership, transmission) values ('" + VIN + "', " + engineSize + ", " + doors + ", " + prodYear + ", " + fuelRating + ", '" + colour + "', " + seats + ", '" + make + "', '" + model + "', '" + fuelType + "', '" + bodyStyle + "', '" + ds + "', '" + transmission + "')");
+                        
                         this.Close();
                     }
                 }
