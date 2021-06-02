@@ -212,7 +212,15 @@ namespace _323assignment
                 List<BsonDocument> model = mongoDB.Read("model", new BsonDocument("make", make));
                 foreach (BsonDocument item in model)
                 {
-                    comboBoxModel.Items.Add(item.GetValue("name"));
+                    try
+                    {
+                        comboBoxModel.Items.Add(item.GetValue("name"));
+                    }
+                    catch(Exception ex)
+                    {
+                        MessageBox.Show("An Error has occured:" + ex);
+                    }
+
                 }
             }
         }

@@ -102,11 +102,19 @@ namespace _323assignment
             }
             else
             {
-                List<BsonDocument> model = mongoDB.Read("model", new BsonDocument("make", make));
-                foreach (BsonDocument item in model)
+                try
                 {
-                    comboBoxModel.Items.Add(item.GetValue("name"));
+                    List<BsonDocument> model = mongoDB.Read("model", new BsonDocument("make", make));
+                    foreach (BsonDocument item in model)
+                    {
+                        comboBoxModel.Items.Add(item.GetValue("name"));
+                    }
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An Error has occured:" + ex);
+                }
+
             }
         }
 
@@ -137,7 +145,7 @@ namespace _323assignment
                 else
                 {
                     listBoxCars.Items.Add("YEAR".PadRight(6) + "MAKE".PadRight(10) + "MODEL".PadRight(15) + "COLOUR".PadRight(10) + "TRANSMISSION".PadRight(20) + "BODY".PadRight(15) + "ENGINE SIZE".PadRight(20) + "DOORS".PadRight(10) + "FUEL TYPE".PadRight(15) + "FUEL RATING".PadRight(10));
-                    List<BsonDocument> car = mongoDB.Read("Cars");
+                    List<BsonDocument> car = mongoDB.Read("car", new BsonDocument("model", model));
                     foreach (BsonDocument item in car)
                     {
 
@@ -153,12 +161,6 @@ namespace _323assignment
             AddCar addCarWindow = new AddCar(isOracle);
             addCarWindow.Show();
 
-        }
-
-        private void SellToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //string VIN = ;
-           // OracleDataReader dr = Database.Query("delete from car where VIN = '"+VIN+"'");
         }
 
         private void RadioButtonOracle_CheckedChanged(object sender, EventArgs e)

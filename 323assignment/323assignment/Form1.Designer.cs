@@ -35,7 +35,6 @@
             this.buttonSearch = new System.Windows.Forms.Button();
             this.listBoxCars = new System.Windows.Forms.ListBox();
             this.carToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sellToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.radioButtonOracle = new System.Windows.Forms.RadioButton();
@@ -47,7 +46,7 @@
             // comboBoxMake
             // 
             this.comboBoxMake.FormattingEnabled = true;
-            this.comboBoxMake.Location = new System.Drawing.Point(18, 58);
+            this.comboBoxMake.Location = new System.Drawing.Point(12, 49);
             this.comboBoxMake.Name = "comboBoxMake";
             this.comboBoxMake.Size = new System.Drawing.Size(121, 21);
             this.comboBoxMake.TabIndex = 0;
@@ -56,7 +55,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 42);
+            this.label1.Location = new System.Drawing.Point(12, 33);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(70, 13);
             this.label1.TabIndex = 1;
@@ -65,7 +64,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(148, 42);
+            this.label2.Location = new System.Drawing.Point(12, 76);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(72, 13);
             this.label2.TabIndex = 3;
@@ -74,16 +73,16 @@
             // comboBoxModel
             // 
             this.comboBoxModel.FormattingEnabled = true;
-            this.comboBoxModel.Location = new System.Drawing.Point(151, 58);
+            this.comboBoxModel.Location = new System.Drawing.Point(12, 92);
             this.comboBoxModel.Name = "comboBoxModel";
             this.comboBoxModel.Size = new System.Drawing.Size(121, 21);
             this.comboBoxModel.TabIndex = 2;
             // 
             // buttonSearch
             // 
-            this.buttonSearch.Location = new System.Drawing.Point(278, 58);
+            this.buttonSearch.Location = new System.Drawing.Point(12, 132);
             this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(75, 23);
+            this.buttonSearch.Size = new System.Drawing.Size(121, 23);
             this.buttonSearch.TabIndex = 4;
             this.buttonSearch.Text = "Search";
             this.buttonSearch.UseVisualStyleBackColor = true;
@@ -93,32 +92,24 @@
             // 
             this.listBoxCars.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBoxCars.FormattingEnabled = true;
-            this.listBoxCars.Location = new System.Drawing.Point(370, 58);
+            this.listBoxCars.Location = new System.Drawing.Point(139, 33);
             this.listBoxCars.Name = "listBoxCars";
             this.listBoxCars.ScrollAlwaysVisible = true;
-            this.listBoxCars.Size = new System.Drawing.Size(850, 160);
+            this.listBoxCars.Size = new System.Drawing.Size(850, 212);
             this.listBoxCars.TabIndex = 5;
             // 
             // carToolStripMenuItem
             // 
             this.carToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sellToolStripMenuItem,
             this.addToolStripMenuItem});
             this.carToolStripMenuItem.Name = "carToolStripMenuItem";
             this.carToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.carToolStripMenuItem.Text = "Car";
             // 
-            // sellToolStripMenuItem
-            // 
-            this.sellToolStripMenuItem.Name = "sellToolStripMenuItem";
-            this.sellToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
-            this.sellToolStripMenuItem.Text = "Sell";
-            this.sellToolStripMenuItem.Click += new System.EventHandler(this.SellToolStripMenuItem_Click);
-            // 
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addToolStripMenuItem.Text = "Add";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.AddToolStripMenuItem_Click);
             // 
@@ -128,7 +119,7 @@
             this.carToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1289, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1002, 24);
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -136,7 +127,7 @@
             // 
             this.radioButtonOracle.AutoSize = true;
             this.radioButtonOracle.Checked = true;
-            this.radioButtonOracle.Location = new System.Drawing.Point(18, 212);
+            this.radioButtonOracle.Location = new System.Drawing.Point(18, 191);
             this.radioButtonOracle.Name = "radioButtonOracle";
             this.radioButtonOracle.Size = new System.Drawing.Size(56, 17);
             this.radioButtonOracle.TabIndex = 7;
@@ -148,7 +139,7 @@
             // radioButtonMongo
             // 
             this.radioButtonMongo.AutoSize = true;
-            this.radioButtonMongo.Location = new System.Drawing.Point(16, 235);
+            this.radioButtonMongo.Location = new System.Drawing.Point(18, 214);
             this.radioButtonMongo.Name = "radioButtonMongo";
             this.radioButtonMongo.Size = new System.Drawing.Size(58, 17);
             this.radioButtonMongo.TabIndex = 8;
@@ -158,7 +149,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(15, 196);
+            this.label3.Location = new System.Drawing.Point(15, 175);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(56, 13);
             this.label3.TabIndex = 9;
@@ -168,7 +159,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1289, 258);
+            this.ClientSize = new System.Drawing.Size(1002, 258);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.radioButtonMongo);
             this.Controls.Add(this.radioButtonOracle);
@@ -199,7 +190,6 @@
         private System.Windows.Forms.Button buttonSearch;
         private System.Windows.Forms.ListBox listBoxCars;
         private System.Windows.Forms.ToolStripMenuItem carToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem sellToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.RadioButton radioButtonOracle;
