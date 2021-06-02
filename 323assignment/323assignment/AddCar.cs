@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MongoDB.Bson;
 using Oracle.ManagedDataAccess.Client;
 
 namespace _323assignment
@@ -14,6 +15,7 @@ namespace _323assignment
     public partial class AddCar : Form
     {
         OracleDB Database;
+        Mongo mongoDB;
         bool oracle;
         public AddCar(bool isOracle)
         {
@@ -29,7 +31,42 @@ namespace _323assignment
                 }
                 OracleLoadItems();
             }
+            else
+            {
+                mongoDB = new Mongo();
+                if (!mongoDB.Connect())
+                {
+                    MessageBox.Show("Failed to connect to the Database");
+                    this.Close();
+                }
+                MongoLoadItems();
+            }
 
+        }
+        private void MongoLoadItems()
+        {
+            try
+            {
+                MongoItemLoad("transmission", comboBoxTransmission);
+                MongoItemLoad("fuel_type", comboBoxFuelType);
+                MongoItemLoad("body_style", comboBoxBody);
+                MongoItemLoad("make", comboBoxMake);
+                MongoItemLoad("Dealership", comboBoxDealership);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An Error has occured:" + ex);
+            }
+        }
+
+        private void MongoItemLoad(string collection, ComboBox combo)
+        {
+            List<BsonDocument> list = mongoDB.Read(collection);
+            foreach (BsonDocument item in list)
+            {
+                combo.Items.Add(item.GetValue("name").ToString());
+
+            }
         }
 
         private void OracleLoadItems()
@@ -136,6 +173,14 @@ namespace _323assignment
                 catch (Exception ex)
                 {
                     MessageBox.Show("An Error has occured:" + ex);
+                }
+            }
+            else
+            {
+                List<BsonDocument> model = mongoDB.Read("model", new BsonDocument("make", make));
+                foreach (BsonDocument item in model)
+                {
+                    comboBoxModel.Items.Add(item.GetValue("name"));
                 }
             }
         }
