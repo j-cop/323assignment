@@ -141,7 +141,7 @@ namespace _323assignment
                     foreach (BsonDocument item in car)
                     {
 
-                        listBoxCars.Items.Add(item.GetValue("year").ToString().PadRight(6) + item.GetValue("make").ToString().PadRight(10) + item.GetValue("model").ToString().PadRight(15) + item.GetValue("colour").ToString().PadRight(10) + item.GetValue("transmission").ToString().PadRight(20) + item.GetValue("body").ToString().PadRight(15) + item.GetValue("engine_size").ToString().PadRight(20) + item.GetValue("doors").ToString().PadRight(10) + item.GetValue("fuel_type").ToString().PadRight(15) + item.GetValue("fuel_rating").ToString().PadRight(10));
+                        listBoxCars.Items.Add(item.GetValue("prod_year").ToString().PadRight(6) + item.GetValue("make").ToString().PadRight(10) + item.GetValue("model").ToString().PadRight(15) + item.GetValue("colour").ToString().PadRight(10) + item.GetValue("transmission").ToString().PadRight(20) + item.GetValue("body_style").ToString().PadRight(15) + item.GetValue("engine_size").ToString().PadRight(20) + item.GetValue("doors").ToString().PadRight(10) + item.GetValue("fuel_type").ToString().PadRight(15) + item.GetValue("fuel_rating").ToString().PadRight(10));
 
                     }
                 }
